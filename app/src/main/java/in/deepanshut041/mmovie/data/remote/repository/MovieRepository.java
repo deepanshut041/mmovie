@@ -1,19 +1,12 @@
 package in.deepanshut041.mmovie.data.remote.repository;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
-import com.github.pwittchen.reactivenetwork.library.rx2.ReactiveNetwork;
-import com.google.gson.stream.MalformedJsonException;
-
-import java.io.IOException;
-import java.net.SocketTimeoutException;
 import java.util.List;
 
 import javax.inject.Inject;
 
-import in.deepanshut041.mmovie.AcApp;
-import in.deepanshut041.mmovie.R;
 import in.deepanshut041.mmovie.data.local.dao.MovieDao;
 import in.deepanshut041.mmovie.data.local.entity.MovieEntity;
 import in.deepanshut041.mmovie.data.remote.ApiService;
@@ -21,12 +14,8 @@ import in.deepanshut041.mmovie.data.remote.Resource;
 import in.deepanshut041.mmovie.data.remote.model.PopularMovieResponse;
 import io.reactivex.Observable;
 
-import io.reactivex.Observer;
-import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import retrofit2.HttpException;
 
 /**
  * File Description:

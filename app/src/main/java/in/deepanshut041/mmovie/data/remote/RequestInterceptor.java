@@ -1,6 +1,6 @@
 package in.deepanshut041.mmovie.data.remote;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import java.io.IOException;
 

@@ -1,7 +1,7 @@
 package in.deepanshut041.mmovie.data.local;
 
-import android.arch.persistence.room.Database;
-import android.arch.persistence.room.RoomDatabase;
+import androidx.room.Database;
+import androidx.room.RoomDatabase;
 
 import in.deepanshut041.mmovie.data.local.dao.MovieDao;
 import in.deepanshut041.mmovie.data.local.entity.MovieEntity;

@@ -1,6 +1,6 @@
 package in.deepanshut041.mmovie.view.mdetail;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import in.deepanshut041.mmovie.R;

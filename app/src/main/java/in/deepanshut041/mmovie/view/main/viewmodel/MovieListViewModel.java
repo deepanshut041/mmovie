@@ -1,11 +1,11 @@
 package in.deepanshut041.mmovie.view.main.viewmodel;
 
 import android.annotation.SuppressLint;
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MediatorLiveData;
-import android.arch.lifecycle.ViewModel;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MediatorLiveData;
+import androidx.lifecycle.ViewModel;
 import android.os.AsyncTask;
-import android.support.annotation.MainThread;
+import androidx.annotation.MainThread;
 
 import com.github.pwittchen.reactivenetwork.library.rx2.ReactiveNetwork;
 

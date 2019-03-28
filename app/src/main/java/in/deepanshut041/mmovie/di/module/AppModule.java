@@ -1,7 +1,7 @@
 package in.deepanshut041.mmovie.di.module;
 
 import android.app.Application;
-import android.arch.persistence.room.Room;
+import androidx.room.Room;
 
 import java.util.concurrent.TimeUnit;
 
