@@ -5,6 +5,7 @@ import dagger.android.ContributesAndroidInjector;
 import in.deepanshut041.mmovie.view.main.MainActivity;
 import in.deepanshut041.mmovie.view.main.MainFragmentBuilderModule;
 import in.deepanshut041.mmovie.view.mdetail.MovieDetailActivity;
+import in.deepanshut041.mmovie.view.mdetail.MovieDetailFragmentBuilderModule;
 
 /**
  * File Description: The module which provides the android injection service to Activities.
@@ -22,7 +23,7 @@ public abstract class ActivityBuilderModule {
     abstract MainActivity mainActivity();
 
     @SuppressWarnings("unused")
-    @ContributesAndroidInjector()
+    @ContributesAndroidInjector(modules = MovieDetailFragmentBuilderModule.class)
     abstract MovieDetailActivity movieDetailActivity();
 
 
