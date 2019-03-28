@@ -15,12 +15,12 @@ import in.deepanshut041.mmovie.data.remote.Status;
 import in.deepanshut041.mmovie.databinding.FragmentListMovieBinding;
 import in.deepanshut041.mmovie.view.adapter.MovieListAdapter;
 import in.deepanshut041.mmovie.view.base.BaseFragment;
-import in.deepanshut041.mmovie.viewmodel.MovieDataViewModel;
+import in.deepanshut041.mmovie.viewmodel.MovieListViewModel;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MovieListFragment extends BaseFragment<MovieDataViewModel, FragmentListMovieBinding> {
+public class MovieListFragment extends BaseFragment<MovieListViewModel, FragmentListMovieBinding> {
 
     public static MovieListFragment newInstance() {
         Bundle args = new Bundle();
@@ -30,8 +30,8 @@ public class MovieListFragment extends BaseFragment<MovieDataViewModel, Fragment
     }
 
     @Override
-    protected Class<MovieDataViewModel> getViewModel() {
-        return MovieDataViewModel.class;
+    protected Class<MovieListViewModel> getViewModel() {
+        return MovieListViewModel.class;
     }
 
     @Override

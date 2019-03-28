@@ -6,7 +6,7 @@ import android.arch.lifecycle.ViewModelProvider;
 import dagger.Binds;
 import dagger.Module;
 import dagger.multibindings.IntoMap;
-import in.deepanshut041.mmovie.viewmodel.MovieDataViewModel;
+import in.deepanshut041.mmovie.viewmodel.MovieListViewModel;
 import in.deepanshut041.mmovie.viewmodel.ViewModelFactory;
 
 /**
@@ -21,9 +21,9 @@ public abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(MovieDataViewModel.class)
+    @ViewModelKey(MovieListViewModel.class)
     @SuppressWarnings("unused")
-    abstract ViewModel bindsMainDataViewModel(MovieDataViewModel movieDataViewModel);
+    abstract ViewModel bindsMainDataViewModel(MovieListViewModel movieListViewModel);
 
 
     @Binds
