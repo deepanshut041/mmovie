@@ -1,12 +1,9 @@
-package in.deepanshut041.mmovie.view.adapter;
+package in.deepanshut041.mmovie.view.main.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +11,7 @@ import java.util.List;
 import in.deepanshut041.mmovie.data.local.entity.MovieEntity;
 import in.deepanshut041.mmovie.databinding.ItemArticleListBinding;
 import in.deepanshut041.mmovie.view.base.BaseAdapter;
+import in.deepanshut041.mmovie.view.main.callbacks.MovieListCallback;
 
 /**
  * File Description:
@@ -25,8 +23,9 @@ import in.deepanshut041.mmovie.view.base.BaseAdapter;
 public class MovieListAdapter extends BaseAdapter<MovieListAdapter.MovieViewHolder, MovieEntity> {
 
     private List<MovieEntity> movieEntities;
-
-    public MovieListAdapter() {
+    private final MovieListCallback movieListCallback;
+    public MovieListAdapter(MovieListCallback movieListCallback) {
+        this.movieListCallback = movieListCallback;
         this.movieEntities = new ArrayList<>();
     }
 
@@ -40,7 +39,7 @@ public class MovieListAdapter extends BaseAdapter<MovieListAdapter.MovieViewHold
     @Override
     public MovieViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
-        return MovieViewHolder.create(LayoutInflater.from(viewGroup.getContext()), viewGroup);
+        return MovieViewHolder.create(LayoutInflater.from(viewGroup.getContext()), viewGroup, movieListCallback);
     }
 
     @Override
@@ -55,17 +54,18 @@ public class MovieListAdapter extends BaseAdapter<MovieListAdapter.MovieViewHold
 
     static class MovieViewHolder extends RecyclerView.ViewHolder {
 
-        private static MovieViewHolder create(LayoutInflater inflater, ViewGroup parent) {
+        private static MovieViewHolder create(LayoutInflater inflater, ViewGroup parent, MovieListCallback movieListCallback) {
             ItemArticleListBinding itemMovieListBinding = ItemArticleListBinding.inflate(inflater, parent, false);
-            return new MovieViewHolder(itemMovieListBinding);
+            return new MovieViewHolder(itemMovieListBinding, movieListCallback);
         }
 
         final ItemArticleListBinding binding;
 
-        public MovieViewHolder(ItemArticleListBinding binding) {
+        public MovieViewHolder(ItemArticleListBinding binding, MovieListCallback movieListCallback) {
             super(binding.getRoot());
             this.binding = binding;
-
+            binding.getRoot().setOnClickListener(v ->
+                    movieListCallback.onMovieClicked(binding.getMovie()));
         }
 
         public void onBind(MovieEntity movieEntity) {

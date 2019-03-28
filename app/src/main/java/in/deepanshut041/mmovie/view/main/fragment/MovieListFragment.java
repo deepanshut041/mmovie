@@ -1,4 +1,4 @@
-package in.deepanshut041.mmovie.view.fragment;
+package in.deepanshut041.mmovie.view.main.fragment;
 
 
 import android.os.Bundle;
@@ -10,17 +10,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import javax.inject.Inject;
+
 import in.deepanshut041.mmovie.R;
+import in.deepanshut041.mmovie.data.local.entity.MovieEntity;
 import in.deepanshut041.mmovie.data.remote.Status;
 import in.deepanshut041.mmovie.databinding.FragmentListMovieBinding;
-import in.deepanshut041.mmovie.view.adapter.MovieListAdapter;
+import in.deepanshut041.mmovie.view.main.adapter.MovieListAdapter;
 import in.deepanshut041.mmovie.view.base.BaseFragment;
-import in.deepanshut041.mmovie.viewmodel.MovieListViewModel;
+import in.deepanshut041.mmovie.view.main.callbacks.MovieFragmentCallback;
+import in.deepanshut041.mmovie.view.main.callbacks.MovieListCallback;
+import in.deepanshut041.mmovie.view.main.viewmodel.MovieListViewModel;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MovieListFragment extends BaseFragment<MovieListViewModel, FragmentListMovieBinding> {
+public class MovieListFragment extends BaseFragment<MovieListViewModel, FragmentListMovieBinding> implements MovieListCallback {
+
+    @Inject
+    MovieFragmentCallback movieFragmentCallback;
 
     public static MovieListFragment newInstance() {
         Bundle args = new Bundle();
@@ -50,7 +58,7 @@ public class MovieListFragment extends BaseFragment<MovieListViewModel, Fragment
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         dataBinding.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        dataBinding.recyclerView.setAdapter(new MovieListAdapter());
+        dataBinding.recyclerView.setAdapter(new MovieListAdapter(this));
         return dataBinding.getRoot();
     }
 
@@ -65,6 +73,10 @@ public class MovieListFragment extends BaseFragment<MovieListViewModel, Fragment
                 dataBinding.loginProgress.setVisibility(View.GONE);
             }
 
+            if(null != listResource && (listResource.status == Status.LOADING)){
+                dataBinding.loginProgress.setVisibility(View.VISIBLE);
+            }
+
             dataBinding.setResource(listResource);
 
             // If the cached data is already showing then no need to show the error
@@ -72,5 +84,10 @@ public class MovieListFragment extends BaseFragment<MovieListViewModel, Fragment
                 dataBinding.errorText.setVisibility(View.GONE);
             }
         });
+    }
+
+    @Override
+    public void onMovieClicked(MovieEntity movieEntity) {
+        movieFragmentCallback.openMovieDetailView(movieEntity);
     }
 }

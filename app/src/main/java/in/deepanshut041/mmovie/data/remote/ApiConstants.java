@@ -1,5 +1,14 @@
 package in.deepanshut041.mmovie.data.remote;
 
+import com.google.gson.stream.MalformedJsonException;
+
+import java.io.IOException;
+import java.net.SocketTimeoutException;
+
+import in.deepanshut041.mmovie.AcApp;
+import in.deepanshut041.mmovie.R;
+import retrofit2.HttpException;
+
 /**
  * File Description: Keep all the service related constants here.
  * Author: Deepanshu Tyagi
@@ -16,5 +25,21 @@ public class ApiConstants {
 
     private ApiConstants(){
         // Private constructor to hide the implicit one
+    }
+
+    public static String getCustomErrorMessage(Throwable error){
+
+        if (error instanceof SocketTimeoutException) {
+            return AcApp.getAppContext().getString(R.string.requestTimeOutError);
+        } else if (error instanceof MalformedJsonException) {
+            return  AcApp.getAppContext().getString(R.string.responseMalformedJson);
+        } else if (error instanceof IOException) {
+            return  AcApp.getAppContext().getString(R.string.networkError);
+        } else if (error instanceof HttpException) {
+            return (((HttpException) error).response().message());
+        } else {
+            return AcApp.getAppContext().getString(R.string.unknownError);
+        }
+
     }
 }

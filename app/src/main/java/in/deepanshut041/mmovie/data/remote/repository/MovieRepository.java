@@ -77,20 +77,4 @@ public class MovieRepository {
     public void saveMoviesToDb(List<MovieEntity> popularMovies) {
         movieDao.saveMovies(popularMovies);
     }
-
-    public String getCustomErrorMessage(Throwable error){
-
-        if (error instanceof SocketTimeoutException) {
-            return AcApp.getAppContext().getString(R.string.requestTimeOutError);
-        } else if (error instanceof MalformedJsonException) {
-            return  AcApp.getAppContext().getString(R.string.responseMalformedJson);
-        } else if (error instanceof IOException) {
-            return  AcApp.getAppContext().getString(R.string.networkError);
-        } else if (error instanceof HttpException) {
-            return (((HttpException) error).response().message());
-        } else {
-            return AcApp.getAppContext().getString(R.string.unknownError);
-        }
-
-    }
 }

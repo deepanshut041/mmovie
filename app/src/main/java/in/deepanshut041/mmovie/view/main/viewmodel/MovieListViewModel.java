@@ -1,4 +1,4 @@
-package in.deepanshut041.mmovie.viewmodel;
+package in.deepanshut041.mmovie.view.main.viewmodel;
 
 import android.annotation.SuppressLint;
 import android.arch.lifecycle.LiveData;
@@ -6,7 +6,6 @@ import android.arch.lifecycle.MediatorLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.os.AsyncTask;
 import android.support.annotation.MainThread;
-import android.util.Log;
 
 import com.github.pwittchen.reactivenetwork.library.rx2.ReactiveNetwork;
 
@@ -15,11 +14,11 @@ import java.util.List;
 import javax.inject.Inject;
 
 import in.deepanshut041.mmovie.data.local.entity.MovieEntity;
+import in.deepanshut041.mmovie.data.remote.ApiConstants;
 import in.deepanshut041.mmovie.data.remote.Resource;
 import in.deepanshut041.mmovie.data.remote.model.PopularMovieResponse;
 import in.deepanshut041.mmovie.data.remote.repository.MovieRepository;
 import io.reactivex.Observer;
-import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
@@ -41,7 +40,7 @@ public class MovieListViewModel extends ViewModel {
     public MovieListViewModel(MovieRepository movieRepository) {
         disposable = new CompositeDisposable();
         this.movieRepository = movieRepository;
-        
+
         Disposable internetDiposable = ReactiveNetwork
             .observeInternetConnectivity()
             .subscribeOn(Schedulers.io())
@@ -96,14 +95,17 @@ public class MovieListViewModel extends ViewModel {
                 @Override
                 public void onError(Throwable e) {
                     result.removeSource(dbSource);
-                    result.addSource(dbSource, newData -> result.setValue(Resource.error(movieRepository.getCustomErrorMessage(e), newData)));
+                    result.addSource(dbSource, newData -> result.setValue(Resource.error(ApiConstants.getCustomErrorMessage(e), newData)));
 
                 }
 
                 @Override
                 public void onComplete() {
-                    result.removeSource(dbSource);
-                    result.addSource(movieRepository.loadMoviesFromDb(), newData -> result.setValue(Resource.success(newData)));
+                    LiveData<List<MovieEntity>> data = movieRepository.loadMoviesFromDb();
+                    if(data != null){
+                        result.removeSource(dbSource);
+                        result.addSource(data, newData -> result.setValue(Resource.success(newData)));
+                    }
                 }
             });
 

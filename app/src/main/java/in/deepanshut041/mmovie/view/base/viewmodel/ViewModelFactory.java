@@ -1,4 +1,4 @@
-package in.deepanshut041.mmovie.viewmodel;
+package in.deepanshut041.mmovie.view.base.viewmodel;
 
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;

@@ -1,9 +1,11 @@
-package in.deepanshut041.mmovie.di.builder;
+package in.deepanshut041.mmovie.view.main;
 
-
+import dagger.Binds;
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
-import in.deepanshut041.mmovie.view.fragment.MovieListFragment;
+
+import in.deepanshut041.mmovie.view.main.callbacks.MovieFragmentCallback;
+import in.deepanshut041.mmovie.view.main.fragment.MovieListFragment;
 
 
 /**
@@ -14,9 +16,13 @@ import in.deepanshut041.mmovie.view.fragment.MovieListFragment;
  * Modified: 03/25/2019
  */
 @Module
-public abstract class FragmentBuilderModule {
+public abstract class MainFragmentBuilderModule {
 
     @SuppressWarnings("unused")
     @ContributesAndroidInjector
     abstract MovieListFragment contributeMainFragment();
+
+    @Binds
+    abstract MovieFragmentCallback movieFragmentCallback(MainActivity mainActivity);
+
 }
