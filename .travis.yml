@@ -50,8 +50,9 @@ before_deploy:
 
 deploy:
   provider: releases
-  file: app/build/outputs/apk/release/app-release-unsigned.apk
+  file: app/build/outputs/apk/debug/app-debug.apk
   overwrite: true
   skip_cleanup: true
   api_key: $GH_TOKEN
   on:
+    branch: master
