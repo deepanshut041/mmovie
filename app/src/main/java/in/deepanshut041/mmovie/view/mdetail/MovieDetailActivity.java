@@ -1,6 +1,5 @@
 package in.deepanshut041.mmovie.view.mdetail;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import in.deepanshut041.mmovie.R;
@@ -21,7 +20,8 @@ public class MovieDetailActivity extends BaseActivity<ActivityMovieDetailBinding
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FragmentUtils.replaceFragment(this, MovieDetailFragment.newInstance(), R.id.fragment_container, false, TRANSITION_NONE);
+        FragmentUtils.replaceFragment(this, MovieDetailFragment.newInstance(),
+                R.id.fragment_container, false, TRANSITION_NONE);
         if(null != getSupportActionBar())
             getSupportActionBar().setTitle(getString(R.string.app_name));
 
