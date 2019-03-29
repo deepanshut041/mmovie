@@ -23,6 +23,7 @@ public abstract class MainFragmentBuilderModule {
     abstract MovieListFragment contributeMainFragment();
 
     @Binds
+    @SuppressWarnings("unused")
     abstract MovieFragmentCallback movieFragmentCallback(MainActivity mainActivity);
 
 }

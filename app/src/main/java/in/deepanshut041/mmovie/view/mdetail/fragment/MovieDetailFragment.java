@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import in.deepanshut041.mmovie.R;
+import in.deepanshut041.mmovie.data.remote.Status;
 import in.deepanshut041.mmovie.databinding.FragmentDetailMovieBinding;
 import in.deepanshut041.mmovie.view.base.BaseFragment;
 import in.deepanshut041.mmovie.view.mdetail.viewmodel.MovieDetailViewModel;
@@ -19,7 +20,6 @@ import in.deepanshut041.mmovie.view.mdetail.viewmodel.MovieDetailViewModel;
  * A simple {@link Fragment} subclass.
  */
 public class MovieDetailFragment extends BaseFragment<MovieDetailViewModel, FragmentDetailMovieBinding> {
-
 
     public static MovieDetailFragment newInstance() {
         Bundle args = new Bundle();
@@ -55,6 +55,31 @@ public class MovieDetailFragment extends BaseFragment<MovieDetailViewModel, Frag
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        viewModel.getMovie(122).observe(this, listResource -> {
+            if(null != listResource && (listResource.status == Status.ERROR || listResource.status == Status.SUCCESS)){
+                dataBinding.loginProgress.setVisibility(View.GONE);
+            }
 
+            if(null != listResource && (listResource.status == Status.LOADING)){
+                dataBinding.loginProgress.setVisibility(View.VISIBLE);
+                dataBinding.movieLayout.setVisibility(View.GONE);
+                dataBinding.errorText.setVisibility(View.GONE);
+            }
+
+            if(null != listResource && (listResource.status == Status.SUCCESS)  && listResource.data != null){
+                dataBinding.movieLayout.setVisibility(View.VISIBLE);
+                dataBinding.errorText.setVisibility(View.GONE);
+                dataBinding.setMovie(listResource.data);
+                if(listResource.data.getBackdropPath() != null)
+                    dataBinding.videoThumbnail.setImageURI("https://image.tmdb.org/t/p/w300" + listResource.data.getBackdropPath());
+            }
+
+            if(null != listResource && (listResource.status == Status.ERROR)){
+                dataBinding.movieLayout.setVisibility(View.GONE);
+                dataBinding.errorText.setVisibility(View.VISIBLE);
+                dataBinding.errorText.setText(listResource.getMessage());
+            }
+        });
     }
+
 }

@@ -11,9 +11,11 @@ import in.deepanshut041.mmovie.data.local.dao.MovieDao;
 import in.deepanshut041.mmovie.data.local.entity.MovieEntity;
 import in.deepanshut041.mmovie.data.remote.ApiService;
 import in.deepanshut041.mmovie.data.remote.Resource;
+import in.deepanshut041.mmovie.data.remote.model.MovieResponse;
 import in.deepanshut041.mmovie.data.remote.model.PopularMovieResponse;
 import io.reactivex.Observable;
 
+import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
@@ -35,7 +37,6 @@ public class MovieRepository {
     }
 
     public Observable<PopularMovieResponse> loadPopularMovies() {
-        final MutableLiveData<Resource<List<MovieEntity>>> liveData = new MutableLiveData<>();
         Observable<PopularMovieResponse> page1 = apiService.loadPopularMovies(1).observeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
         Observable<PopularMovieResponse> page2 = apiService.loadPopularMovies(2).observeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
         Observable<PopularMovieResponse> page3 = apiService.loadPopularMovies(3).observeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
@@ -65,5 +66,9 @@ public class MovieRepository {
 
     public void saveMoviesToDb(List<MovieEntity> popularMovies) {
         movieDao.saveMovies(popularMovies);
+    }
+
+    public  Single<MovieResponse> loadMovie(int id){
+        return apiService.loadMovie(id);
     }
 }

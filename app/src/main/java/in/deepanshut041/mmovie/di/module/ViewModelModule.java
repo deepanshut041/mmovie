@@ -8,6 +8,7 @@ import dagger.Module;
 import dagger.multibindings.IntoMap;
 import in.deepanshut041.mmovie.view.main.viewmodel.MovieListViewModel;
 import in.deepanshut041.mmovie.view.base.viewmodel.ViewModelFactory;
+import in.deepanshut041.mmovie.view.mdetail.viewmodel.MovieDetailViewModel;
 
 /**
  * File Description: Allows us to inject dependencies via constructor injection
@@ -23,7 +24,13 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(MovieListViewModel.class)
     @SuppressWarnings("unused")
-    abstract ViewModel bindsMainListViewModel(MovieListViewModel movieListViewModel);
+    abstract ViewModel bindsMovieListViewModel(MovieListViewModel movieListViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(MovieDetailViewModel.class)
+    @SuppressWarnings("unused")
+    abstract ViewModel bindsMovieDetailViewModel(MovieDetailViewModel movieDetailViewModel);
 
 
     @Binds

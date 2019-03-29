@@ -71,7 +71,7 @@ public class MovieListAdapter extends BaseAdapter<MovieListAdapter.MovieViewHold
         void onBind(MovieEntity movieEntity) {
             binding.setMovie(movieEntity);
             binding.executePendingBindings();
-            binding.imageView.setImageURI("https://image.tmdb.org/t/p/w500" + movieEntity.getPosterPath());
+            binding.imageView.setImageURI("https://image.tmdb.org/t/p/w200" + movieEntity.getPosterPath());
         }
 
 
