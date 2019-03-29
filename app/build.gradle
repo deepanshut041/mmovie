@@ -36,8 +36,7 @@ dependencies {
     final ARCHITECTURE_COMPONENT_VERSION = '2.1.0-alpha03'
     final RETROFIT_VERSION = '2.3.0'
     final DAGGER_VERSION = '2.21'
-    final LOTTIE_ANDROID_VERSION = '2.5.4'
-    final ROOM_VERSION = '2.1.0-alpha06'
+    final ROOM_VERSION = '2.1.0-alpha04'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -79,11 +78,11 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-common-java8:$ARCHITECTURE_COMPONENT_VERSION"
     implementation "androidx.lifecycle:lifecycle-reactivestreams:$ARCHITECTURE_COMPONENT_VERSION"
 
-    //Lottie Animation view
-    implementation "com.airbnb.android:lottie:$LOTTIE_ANDROID_VERSION"
-
-    //Calligraphy for custom fonts
+    // Calligraphy for custom fonts
     implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
+
+    // Fresco for imageview
+    implementation 'com.facebook.fresco:fresco:1.13.0'
 
     // Room SQLite for data persistence
     implementation "androidx.room:room-runtime:$ROOM_VERSION"

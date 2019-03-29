@@ -61,17 +61,20 @@ public class MovieListAdapter extends BaseAdapter<MovieListAdapter.MovieViewHold
 
         final ItemArticleListBinding binding;
 
-        public MovieViewHolder(ItemArticleListBinding binding, MovieListCallback movieListCallback) {
+        MovieViewHolder(ItemArticleListBinding binding, MovieListCallback movieListCallback) {
             super(binding.getRoot());
             this.binding = binding;
             binding.getRoot().setOnClickListener(v ->
                     movieListCallback.onMovieClicked(binding.getMovie()));
         }
 
-        public void onBind(MovieEntity movieEntity) {
+        void onBind(MovieEntity movieEntity) {
             binding.setMovie(movieEntity);
             binding.executePendingBindings();
-
+            binding.imageView.setImageURI("https://image.tmdb.org/t/p/w500" + movieEntity.getPosterPath());
         }
+
+
+
     }
 }

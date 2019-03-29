@@ -16,63 +16,83 @@
         app:cardCornerRadius="4dp"
         app:cardElevation="1dp">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="start"
-            android:orientation="horizontal"
-            android:paddingBottom="20dp"
-            android:paddingStart="10dp"
-            android:paddingEnd="20dp"
-            android:paddingTop="10dp">
+            android:layout_height="200dp"
+            android:padding="10dp">
 
-            <ImageView
+            <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/imageView"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="@+id/guideline3"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="top"
-                android:layout_margin="10dp"
-                android:scaleType="centerCrop" />
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="130dp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/group"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                app:constraint_referenced_ids="titleTxt, authorsTxt, timeTxt"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                android:layout_marginStart="10dp"
+                app:layout_constraintStart_toStartOf="@+id/guideline3"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/titleTxt"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:orientation="vertical">
+                android:text="@{movie.title}"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="start|center_vertical"
+                app:layout_constraintEnd_toEndOf="@+id/group"
+                app:layout_constraintStart_toStartOf="@+id/group"
+                app:layout_constraintTop_toTopOf="@+id/group" />
 
-                <TextView
-                    android:id="@+id/titleTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{movie.title}"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:typeface="sans" />
+            <TextView
+                android:id="@+id/authorsTxt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:maxHeight="100dp"
+                android:text="@{movie.overview}"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="12sp"
+                android:textStyle="normal"
+                android:typeface="sans"
+                android:layout_marginTop="2dp"
+                android:gravity="start|center_vertical"
+                app:layout_constraintEnd_toEndOf="@+id/group"
+                app:layout_constraintStart_toStartOf="@+id/group"
+                app:layout_constraintTop_toBottomOf="@+id/titleTxt" />
 
-                <TextView
-                    android:id="@+id/authorsTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="@{movie.originalLanguage}"
-                    android:textColor="@android:color/black"
-                    android:textSize="12sp"
-                    android:textStyle="normal"
-                    android:typeface="sans" />
-
-                <TextView
-                    android:id="@+id/timeTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_marginTop="10dp"
-                    android:text="@{movie.releaseDate}"
-                    android:textColor="@android:color/darker_gray"
-                    android:textSize="12sp"
-                    android:textStyle="normal"
-                    android:typeface="sans" />
-            </LinearLayout>
-        </LinearLayout>
+            <TextView
+                android:id="@+id/timeTxt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="@{movie.releaseDate}"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:typeface="sans"
+                android:layout_marginTop="10dp"
+                android:gravity="start|center_vertical"
+                app:layout_constraintEnd_toEndOf="@+id/group"
+                app:layout_constraintStart_toStartOf="@+id/group"
+                app:layout_constraintTop_toBottomOf="@+id/authorsTxt" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </layout>

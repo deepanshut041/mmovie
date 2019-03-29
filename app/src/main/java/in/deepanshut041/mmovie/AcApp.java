@@ -3,6 +3,8 @@ package in.deepanshut041.mmovie;
 import android.app.Activity;
 import android.app.Application;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
+
 import javax.inject.Inject;
 
 import dagger.android.AndroidInjector;
@@ -40,6 +42,7 @@ public class AcApp extends Application implements HasActivityInjector {
     public void onCreate() {
         super.onCreate();
         initializeComponent();
+        Fresco.initialize(this);
         setInstance(this);
     }
 
