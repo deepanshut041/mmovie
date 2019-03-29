@@ -1,7 +1,9 @@
 package in.deepanshut041.mmovie.view.mdetail;
 
+import dagger.Binds;
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
+import in.deepanshut041.mmovie.view.mdetail.callbacks.MovieDetailFragmentCallback;
 import in.deepanshut041.mmovie.view.mdetail.fragment.MovieDetailFragment;
 
 
@@ -19,4 +21,7 @@ public abstract class MovieDetailFragmentBuilderModule {
     @ContributesAndroidInjector
     abstract MovieDetailFragment contributeMovieDetailFragment();
 
-}
+    @Binds
+    @SuppressWarnings("unused")
+    abstract MovieDetailFragmentCallback movieFragmentCallback(MovieDetailDetailActivity movieDetailActivity);
+ }

@@ -50,8 +50,7 @@ before_deploy:
 
 deploy:
   provider: releases
-  file_glob: true
-  file: app/build/outputs/apk/release/*
+  file: app/build/outputs/apk/release/app-release.apk
   overwrite: true
   skip_cleanup: true
   api_key: $GH_TOKEN

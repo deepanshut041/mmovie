@@ -30,7 +30,7 @@ public class MovieDetailViewModel extends ViewModel {
     private final MovieRepository movieRepository;
     private final MediatorLiveData<Resource<MovieResponse>> result = new MediatorLiveData<>();
     private CompositeDisposable disposable;
-    private int movieId;
+    private long movieId;
 
     @Inject
     public MovieDetailViewModel(MovieRepository movieRepository) {
@@ -38,7 +38,7 @@ public class MovieDetailViewModel extends ViewModel {
         this.movieRepository = movieRepository;
     }
 
-    public final LiveData<Resource<MovieResponse>> getMovie(int id)
+    public final LiveData<Resource<MovieResponse>> getMovie(long id)
     {
         this.movieId = id;
         Disposable internetDiposable = ReactiveNetwork

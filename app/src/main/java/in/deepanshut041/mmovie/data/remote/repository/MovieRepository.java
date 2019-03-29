@@ -68,7 +68,7 @@ public class MovieRepository {
         movieDao.saveMovies(popularMovies);
     }
 
-    public  Single<MovieResponse> loadMovie(int id){
+    public  Single<MovieResponse> loadMovie(long id){
         return apiService.loadMovie(id);
     }
 }

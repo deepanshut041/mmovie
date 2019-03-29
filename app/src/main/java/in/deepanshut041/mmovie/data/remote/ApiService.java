@@ -21,5 +21,5 @@ public interface ApiService {
     Observable<PopularMovieResponse> loadPopularMovies(@Query("page") int page);
 
     @GET("3/movie/{id}")
-    Single<MovieResponse> loadMovie(@Path("id") int id);
+    Single<MovieResponse> loadMovie(@Path("id") long id);
 }

@@ -4,7 +4,7 @@ import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
 import in.deepanshut041.mmovie.view.main.MainActivity;
 import in.deepanshut041.mmovie.view.main.MainFragmentBuilderModule;
-import in.deepanshut041.mmovie.view.mdetail.MovieDetailActivity;
+import in.deepanshut041.mmovie.view.mdetail.MovieDetailDetailActivity;
 import in.deepanshut041.mmovie.view.mdetail.MovieDetailFragmentBuilderModule;
 
 /**
@@ -24,7 +24,7 @@ public abstract class ActivityBuilderModule {
 
     @SuppressWarnings("unused")
     @ContributesAndroidInjector(modules = MovieDetailFragmentBuilderModule.class)
-    abstract MovieDetailActivity movieDetailActivity();
+    abstract MovieDetailDetailActivity movieDetailActivity();
 
 
 }
