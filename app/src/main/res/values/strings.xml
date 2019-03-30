@@ -20,5 +20,5 @@
     <string name="rating">Rating</string>
     <string name="release_date">Release Date</string>
     <string name="overview">Overview</string>
-    <string name="search_title">Search</string>
+    <string name="search_title">Search Movies</string>
 </resources>

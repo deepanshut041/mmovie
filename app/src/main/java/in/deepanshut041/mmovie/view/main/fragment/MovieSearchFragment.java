@@ -17,6 +17,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import in.deepanshut041.mmovie.R;
+import in.deepanshut041.mmovie.common.Constants;
 import in.deepanshut041.mmovie.data.local.entity.MovieEntity;
 import in.deepanshut041.mmovie.data.remote.Status;
 import in.deepanshut041.mmovie.databinding.MovieSearchFragmentBinding;
@@ -99,12 +100,14 @@ public class MovieSearchFragment extends BaseFragment<MovieSearchViewModel, Movi
         searchView.setSearchableInfo(
                 searchManager.getSearchableInfo(getActivity().getComponentName()));
 
+        searchView.setQueryHint(Constants.SEARCH_MOVIE);
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 fetchMovies(query);
                 searchView.clearFocus();
-                return false;
+                return true;
             }
 
             @Override
@@ -115,7 +118,7 @@ public class MovieSearchFragment extends BaseFragment<MovieSearchViewModel, Movi
 
     }
 
-    public void fetchMovies(String query){
+    private void fetchMovies(String query){
         viewModel.getSearchMovies(query).observe(this, listResource -> {
             if(null != listResource && (listResource.status == Status.ERROR || listResource.status == Status.SUCCESS)){
                 dataBinding.loginProgress.setVisibility(View.GONE);
@@ -123,12 +126,20 @@ public class MovieSearchFragment extends BaseFragment<MovieSearchViewModel, Movi
 
             if(null != listResource && (listResource.status == Status.LOADING)){
                 dataBinding.loginProgress.setVisibility(View.VISIBLE);
+                dataBinding.recyclerView.setVisibility(View.GONE);
+                dataBinding.errorText.setVisibility(View.GONE);
             }
 
-            dataBinding.setResource(listResource);
-
-            if(null != dataBinding.recyclerView.getAdapter() && dataBinding.recyclerView.getAdapter().getItemCount() > 0){
+            if(null != listResource && (listResource.status == Status.SUCCESS)  && listResource.data != null){
+                dataBinding.recyclerView.setVisibility(View.VISIBLE);
                 dataBinding.errorText.setVisibility(View.GONE);
+                dataBinding.setResource(listResource);
+            }
+
+            if(null != listResource && (listResource.status == Status.ERROR)){
+                dataBinding.recyclerView.setVisibility(View.GONE);
+                dataBinding.errorText.setVisibility(View.VISIBLE);
+                dataBinding.errorText.setText(listResource.getMessage());
             }
         });
     }

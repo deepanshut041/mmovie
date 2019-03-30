@@ -35,13 +35,13 @@ public class MovieSearchViewModel extends ViewModel {
     public final LiveData<Resource<List<MovieEntity>>> getSearchMovies(String query) {
         this.query = query;
         Disposable internetDisposable = ReactiveNetwork
-                .observeInternetConnectivity()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        this::fetchFromNetwork
-                );
-        disposable.add(internetDisposable);
+            .observeInternetConnectivity()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                    this::fetchFromNetwork
+            );
+    disposable.add(internetDisposable);
         return result;
     }
 
@@ -60,9 +60,15 @@ public class MovieSearchViewModel extends ViewModel {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
-                    data -> result.setValue(Resource.success(data.getPopularMovies())),
-                    throwable -> result.setValue(Resource.error(ApiConstants.getCustomErrorMessage(throwable), null))
-            );
+                data -> {
+                    if (data.getPopularMovies().size() == 0){
+                        result.setValue(Resource.error("No movie found", null));
+                    } else {
+                        result.setValue(Resource.success(data.getPopularMovies()));
+                    }
+
+                },
+                throwable -> result.setValue(Resource.error(ApiConstants.getCustomErrorMessage(throwable), null)));
         disposable.add(movieDisposable);
     }
 
@@ -79,6 +85,4 @@ public class MovieSearchViewModel extends ViewModel {
     private boolean shouldFetch() {
         return true;
     }
-
-
 }

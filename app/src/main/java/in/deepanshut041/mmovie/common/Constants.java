@@ -20,6 +20,7 @@ public class Constants {
     public static final String LANGUAGE_GERMAN = "de";
     public static final String LANGUAGE_HINDI = "hi";
     public static final String MOVIE_ID = "movie_id";
+    public static final String SEARCH_MOVIE = "Search Movies ...";
 
     public static final String LOCALE_EN = "en-US";
 
