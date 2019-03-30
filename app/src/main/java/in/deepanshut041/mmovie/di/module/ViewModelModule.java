@@ -6,6 +6,7 @@ import dagger.Binds;
 import dagger.Module;
 import dagger.multibindings.IntoMap;
 import in.deepanshut041.mmovie.view.base.viewmodel.ViewModelFactory;
+import in.deepanshut041.mmovie.view.main.viewmodel.MovieSearchViewModel;
 import in.deepanshut041.mmovie.view.main.viewmodel.MovieListViewModel;
 import in.deepanshut041.mmovie.view.mdetail.viewmodel.MovieDetailViewModel;
 import in.deepanshut041.mmovie.view.search.viewmodel.SearchViewModel;
@@ -37,6 +38,12 @@ public abstract class ViewModelModule {
     @ViewModelKey(SearchViewModel.class)
     @SuppressWarnings("unused")
     abstract ViewModel bindsSearchViewModel(SearchViewModel searchViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(MovieSearchViewModel.class)
+    @SuppressWarnings("unused")
+    abstract ViewModel bindsMovieSearchViewModel(MovieSearchViewModel movieSearchViewModel);
 
 
     @Binds

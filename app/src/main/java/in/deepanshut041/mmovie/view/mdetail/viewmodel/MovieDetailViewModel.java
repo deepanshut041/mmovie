@@ -64,13 +64,13 @@ public class MovieDetailViewModel extends ViewModel {
     private void fetchMovie() {
         result.setValue(Resource.loading(null));
         Disposable movieDisposable = movieRepository
-                .loadMovie(movieId)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                    data -> result.setValue(Resource.success(data)),
-                    throwable -> result.setValue(Resource.error(ApiConstants.getCustomErrorMessage(throwable), null))
-                );
+            .loadMovie(movieId)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                data -> result.setValue(Resource.success(data)),
+                throwable -> result.setValue(Resource.error(ApiConstants.getCustomErrorMessage(throwable), null))
+            );
         disposable.add(movieDisposable);
     }
 

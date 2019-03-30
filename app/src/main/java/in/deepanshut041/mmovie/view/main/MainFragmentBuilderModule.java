@@ -5,6 +5,7 @@ import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
 import in.deepanshut041.mmovie.view.main.callbacks.MovieFragmentCallback;
 import in.deepanshut041.mmovie.view.main.fragment.MovieListFragment;
+import in.deepanshut041.mmovie.view.main.fragment.MovieSearchFragment;
 
 
 /**
@@ -20,6 +21,10 @@ public abstract class MainFragmentBuilderModule {
     @SuppressWarnings("unused")
     @ContributesAndroidInjector
     abstract MovieListFragment contributeMainFragment();
+
+    @SuppressWarnings("unused")
+    @ContributesAndroidInjector
+    abstract MovieSearchFragment contributeMovieSearchFragment();
 
     @Binds
     @SuppressWarnings("unused")

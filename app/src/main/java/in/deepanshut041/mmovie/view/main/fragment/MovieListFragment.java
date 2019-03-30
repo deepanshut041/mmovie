@@ -3,8 +3,12 @@ package in.deepanshut041.mmovie.view.main.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import javax.inject.Inject;
 
@@ -67,7 +71,6 @@ public class MovieListFragment extends BaseFragment<MovieListViewModel, Fragment
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
         viewModel.getPopularMovies().observe(this, listResource -> {
             if(null != listResource && (listResource.status == Status.ERROR || listResource.status == Status.SUCCESS)){
                 dataBinding.loginProgress.setVisibility(View.GONE);
@@ -89,5 +92,23 @@ public class MovieListFragment extends BaseFragment<MovieListViewModel, Fragment
     @Override
     public void onMovieClicked(MovieEntity movieEntity) {
         movieFragmentCallback.openMovieDetailView(movieEntity);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.main_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.search:
+                movieFragmentCallback.openSearchFragment();
+                return false;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
