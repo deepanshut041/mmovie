@@ -15,7 +15,6 @@
         android:theme="@style/AppTheme"
         android:fullBackupContent="false"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".view.search.SearchActivity"/>
         <activity android:name=".view.mdetail.MovieDetailDetailActivity" />
         <activity android:name=".view.main.MainActivity">
             <meta-data android:name="android.app.searchable"

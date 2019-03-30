@@ -2,7 +2,6 @@ package in.deepanshut041.mmovie.view.main;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.widget.Toolbar;
 
 import in.deepanshut041.mmovie.R;
 import in.deepanshut041.mmovie.common.Constants;
@@ -47,43 +46,9 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> implements M
         FragmentUtils.replaceFragment(MainActivity.this, MovieSearchFragment.newInstance(), R.id.fragment_container, true, FragmentUtils.TRANSITION_FADE_IN_OUT);
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        MenuInflater inflater = getMenuInflater();
-//        inflater.inflate(R.menu.main_menu, menu);
-//        SearchManager searchManager =
-//                (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-//        SearchView searchView =
-//                (SearchView) menu.findItem(R.id.search).getActionView();
-//        if (searchManager != null) {
-//
-//            searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-//
-//            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//                @Override
-//                public boolean onQueryTextSubmit(String query) {
-//
-//                    return false;
-//                }
-//
-//                @Override
-//                public boolean onQueryTextChange(String newText) {
-//                    return false;
-//                }
-//            });
-//
-//        }
-//
-//        return true;
-//    }
-//
-//    @Override
-//    public void onBackPressed() {
-//        if(getFragmentManager().getBackStackEntryCount() > 0){
-//            getFragmentManager().popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-//        }
-//        else{
-//            super.onBackPressed();
-//        }
-//    }
+    @Override
+    public void closeSearchFragment() {
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0)
+            getSupportFragmentManager().popBackStackImmediate();
+    }
 }

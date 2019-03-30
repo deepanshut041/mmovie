@@ -21,4 +21,7 @@ public interface ApiService {
 
     @GET("3/movie/{id}")
     Single<MovieResponse> loadMovie(@Path("id") long id);
+
+    @GET("3/search/movie")
+    Single<PopularMovieResponse> searchMovies(@Query("query") String query);
 }

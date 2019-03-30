@@ -67,4 +67,8 @@ public class MovieRepository {
     public  Single<MovieResponse> loadMovie(long id){
         return apiService.loadMovie(id);
     }
+
+    public Single<PopularMovieResponse> searchMovies(String query){
+        return apiService.searchMovies(query);
+    }
 }

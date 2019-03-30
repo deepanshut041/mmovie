@@ -6,8 +6,6 @@ import in.deepanshut041.mmovie.view.main.MainActivity;
 import in.deepanshut041.mmovie.view.main.MainFragmentBuilderModule;
 import in.deepanshut041.mmovie.view.mdetail.MovieDetailDetailActivity;
 import in.deepanshut041.mmovie.view.mdetail.MovieDetailFragmentBuilderModule;
-import in.deepanshut041.mmovie.view.search.SearchActivity;
-import in.deepanshut041.mmovie.view.search.SearchFragmentsBuilderModule;
 
 /**
  * File Description: The module which provides the android injection service to Activities.
@@ -27,9 +25,5 @@ public abstract class ActivityBuilderModule {
     @SuppressWarnings("unused")
     @ContributesAndroidInjector(modules = MovieDetailFragmentBuilderModule.class)
     abstract MovieDetailDetailActivity movieDetailActivity();
-
-    @SuppressWarnings("unused")
-    @ContributesAndroidInjector(modules = SearchFragmentsBuilderModule.class)
-    abstract SearchActivity searchActivity();
 
 }
