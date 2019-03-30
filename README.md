@@ -1,9 +1,9 @@
-## Android MVVM Base Architecture for Enterprise Mobile Application using Architectural Components
+## Movie Application
 [![Build Status](https://travis-ci.com/deepanshut041/mmovie.svg?branch=master)](https://travis-ci.com/deepanshut041/mmovie)
 
 ##Download latest apk
+
 <a href="https://github.com/deepanshut041/mmovie/releases/latest/download/app-release.apk"><img src="https://9apps-apk.ooo/wp-content/uploads/2018/11/download.png" /></a>
-------------
 
 ## Highlights
 
