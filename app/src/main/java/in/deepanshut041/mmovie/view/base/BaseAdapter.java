@@ -1,8 +1,8 @@
 package in.deepanshut041.mmovie.view.base;
 
-import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.List;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * File Description: Base Recyclerview Adapter

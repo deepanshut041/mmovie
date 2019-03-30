@@ -1,11 +1,10 @@
 package in.deepanshut041.mmovie.util;
 
 import androidx.annotation.IntDef;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.appcompat.app.AppCompatActivity;
-
 import in.deepanshut041.mmovie.R;
 
 /**

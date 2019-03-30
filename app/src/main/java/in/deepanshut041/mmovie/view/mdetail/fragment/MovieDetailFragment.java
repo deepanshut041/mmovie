@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-
 import javax.inject.Inject;
 
 import androidx.annotation.NonNull;
@@ -90,17 +89,11 @@ public class MovieDetailFragment extends BaseFragment<MovieDetailViewModel, Frag
                 }
             });
         }
-
         backPressed();
     }
 
     private void backPressed(){
-        dataBinding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                movieDetailFragmentCallback.onBackPressed();
-            }
-        });
+        dataBinding.toolbar.setNavigationOnClickListener(v -> movieDetailFragmentCallback.onBackPressed());
     }
 
 }

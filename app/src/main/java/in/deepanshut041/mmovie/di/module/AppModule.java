@@ -1,12 +1,12 @@
 package in.deepanshut041.mmovie.di.module;
 
 import android.app.Application;
-import androidx.room.Room;
 
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Singleton;
 
+import androidx.room.Room;
 import dagger.Module;
 import dagger.Provides;
 import in.deepanshut041.mmovie.data.local.MovieDatabase;

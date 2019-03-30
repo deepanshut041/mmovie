@@ -1,11 +1,7 @@
 package in.deepanshut041.mmovie.view.main.viewmodel;
 
 import android.annotation.SuppressLint;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MediatorLiveData;
-import androidx.lifecycle.ViewModel;
 import android.os.AsyncTask;
-import androidx.annotation.MainThread;
 
 import com.github.pwittchen.reactivenetwork.library.rx2.ReactiveNetwork;
 
@@ -13,6 +9,10 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import androidx.annotation.MainThread;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MediatorLiveData;
+import androidx.lifecycle.ViewModel;
 import in.deepanshut041.mmovie.data.local.entity.MovieEntity;
 import in.deepanshut041.mmovie.data.remote.ApiConstants;
 import in.deepanshut041.mmovie.data.remote.Resource;

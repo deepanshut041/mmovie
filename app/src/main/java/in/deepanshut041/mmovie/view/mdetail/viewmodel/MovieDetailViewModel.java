@@ -33,7 +33,7 @@ public class MovieDetailViewModel extends ViewModel {
     private long movieId;
 
     @Inject
-    public MovieDetailViewModel(MovieRepository movieRepository) {
+    MovieDetailViewModel(MovieRepository movieRepository) {
         disposable = new CompositeDisposable();
         this.movieRepository = movieRepository;
     }
@@ -41,14 +41,14 @@ public class MovieDetailViewModel extends ViewModel {
     public final LiveData<Resource<MovieResponse>> getMovie(long id)
     {
         this.movieId = id;
-        Disposable internetDiposable = ReactiveNetwork
+        Disposable internetDisposable = ReactiveNetwork
                 .observeInternetConnectivity()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         this::fetchFromNetwork
                 );
-        disposable.add(internetDiposable);
+        disposable.add(internetDisposable);
         return result;
     }
 
@@ -68,11 +68,8 @@ public class MovieDetailViewModel extends ViewModel {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                    data ->{
-                        result.setValue(Resource.success(data));
-                    }, throwable ->{
-                        result.setValue(Resource.error(ApiConstants.getCustomErrorMessage(throwable), null));
-                    }
+                    data -> result.setValue(Resource.success(data)),
+                    throwable -> result.setValue(Resource.error(ApiConstants.getCustomErrorMessage(throwable), null))
                 );
         disposable.add(movieDisposable);
     }

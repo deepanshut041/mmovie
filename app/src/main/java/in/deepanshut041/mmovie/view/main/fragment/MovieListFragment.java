@@ -2,22 +2,22 @@ package in.deepanshut041.mmovie.view.main.fragment;
 
 
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import javax.inject.Inject;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import in.deepanshut041.mmovie.R;
 import in.deepanshut041.mmovie.data.local.entity.MovieEntity;
 import in.deepanshut041.mmovie.data.remote.Status;
 import in.deepanshut041.mmovie.databinding.FragmentListMovieBinding;
-import in.deepanshut041.mmovie.view.main.adapter.MovieListAdapter;
 import in.deepanshut041.mmovie.view.base.BaseFragment;
+import in.deepanshut041.mmovie.view.main.adapter.MovieListAdapter;
 import in.deepanshut041.mmovie.view.main.callbacks.MovieFragmentCallback;
 import in.deepanshut041.mmovie.view.main.callbacks.MovieListCallback;
 import in.deepanshut041.mmovie.view.main.viewmodel.MovieListViewModel;

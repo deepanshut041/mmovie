@@ -3,7 +3,6 @@ package in.deepanshut041.mmovie.view.main;
 import dagger.Binds;
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
-
 import in.deepanshut041.mmovie.view.main.callbacks.MovieFragmentCallback;
 import in.deepanshut041.mmovie.view.main.fragment.MovieListFragment;
 

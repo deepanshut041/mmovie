@@ -1,13 +1,13 @@
 package in.deepanshut041.mmovie.view.main.adapter;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import in.deepanshut041.mmovie.data.local.entity.MovieEntity;
 import in.deepanshut041.mmovie.databinding.ItemArticleListBinding;
 import in.deepanshut041.mmovie.view.base.BaseAdapter;

@@ -2,7 +2,6 @@ package in.deepanshut041.mmovie.data.local;
 
 import androidx.room.Database;
 import androidx.room.RoomDatabase;
-
 import in.deepanshut041.mmovie.data.local.dao.MovieDao;
 import in.deepanshut041.mmovie.data.local.entity.MovieEntity;
 

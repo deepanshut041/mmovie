@@ -1,20 +1,16 @@
 package in.deepanshut041.mmovie.data.remote.repository;
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-
 import java.util.List;
 
 import javax.inject.Inject;
 
+import androidx.lifecycle.LiveData;
 import in.deepanshut041.mmovie.data.local.dao.MovieDao;
 import in.deepanshut041.mmovie.data.local.entity.MovieEntity;
 import in.deepanshut041.mmovie.data.remote.ApiService;
-import in.deepanshut041.mmovie.data.remote.Resource;
 import in.deepanshut041.mmovie.data.remote.model.MovieResponse;
 import in.deepanshut041.mmovie.data.remote.model.PopularMovieResponse;
 import io.reactivex.Observable;
-
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;

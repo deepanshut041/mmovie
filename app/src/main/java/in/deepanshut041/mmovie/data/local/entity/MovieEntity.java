@@ -1,9 +1,9 @@
 package in.deepanshut041.mmovie.data.local.entity;
 
+import com.google.gson.annotations.SerializedName;
+
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-
-import com.google.gson.annotations.SerializedName;
 
 /**
  * File Description:

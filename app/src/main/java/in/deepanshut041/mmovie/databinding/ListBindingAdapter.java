@@ -1,10 +1,9 @@
 package in.deepanshut041.mmovie.databinding;
 
-import androidx.databinding.BindingAdapter;
-import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.List;
 
+import androidx.databinding.BindingAdapter;
+import androidx.recyclerview.widget.RecyclerView;
 import in.deepanshut041.mmovie.data.remote.Resource;
 import in.deepanshut041.mmovie.view.base.BaseAdapter;
 
