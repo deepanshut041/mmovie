@@ -22,7 +22,7 @@
             android:layout_marginBottom="10dp"
             android:indeterminateTint="@color/colorPrimary"
             android:indeterminateTintMode="src_in"
-            android:visibility="visible" />
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/errorText"
